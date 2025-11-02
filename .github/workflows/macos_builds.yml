@@ -27,5 +27,5 @@ jobs:
       env:
         CC: ${{ matrix.cc }}
       run: |
-           cmake . -DCMAKE_C_COMPILER=${{ matrix.cc }}
+           cmake . -DCMAKE_C_COMPILER="${CC}"
            make
