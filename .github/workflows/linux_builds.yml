@@ -35,6 +35,6 @@ jobs:
     - name: build
       env:
         CC: ${{ matrix.cc }}
-        run: |
+      run: |
            cmake . -DCMAKE_C_COMPILER="${CC}"
            make VERBOSE=1
