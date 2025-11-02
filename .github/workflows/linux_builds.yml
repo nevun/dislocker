@@ -1,13 +1,6 @@
 name: linux
 
-on:
-  pull_request:
-    branches:
-    - master
-  push:
-    branches:
-    - master
-    - '*-ci'
+on: [push]
 
 jobs:
   build:
