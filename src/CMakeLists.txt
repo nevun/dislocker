@@ -118,6 +118,10 @@ endif()
 # Libraries
 set (CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
+# Help Cmake find mbedtls cmake config
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+  set(MbedTLS_DIR /usr/lib64/cmake/MbedTLS)
+endif()
 find_package (MbedTLS 3 REQUIRED)
 set (LIB ${LIB} MbedTLS::mbedcrypto)
 

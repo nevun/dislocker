@@ -1,0 +1,24 @@
+name: macos
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-15, macos-14 ]
+        cc: [ clang ]
+    steps:
+    - uses: actions/checkout@v4
+    - name: dependencies
+      run: |
+           brew install -v Caskroom/cask/macfuse
+           ./src/mbed_install.sh
+    - name: build
+      env:
+        CC: ${{ matrix.cc }}
+      run: |
+           cmake . -DCMAKE_C_COMPILER="${CC}"
+           make
